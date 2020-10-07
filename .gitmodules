@@ -1,0 +1,3 @@
+[submodule "c-deps/proj"]
+	path = c-deps/proj
+	url = https://github.com/cockroachdb/PROJ.git
