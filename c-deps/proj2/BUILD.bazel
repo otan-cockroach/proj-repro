@@ -1,0 +1,11 @@
+cc_library(
+    name = "proj2",
+    srcs = glob([
+        "**/*.h",
+        "**/*.c",
+    ]),
+    hdrs = ["proj2.h"],
+    linkstatic = True,
+    visibility = ["//visibility:public"],
+    alwayslink = True,
+)

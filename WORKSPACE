@@ -71,28 +71,3 @@ load("//:dependencies.bzl", "go_deps")
 # gazelle:repository_macro dependencies.bzl%go_deps
 go_deps()
 
-# Load up cmake dependencies.
-
-http_archive(
-   name = "rules_foreign_cc",
-   strip_prefix = "rules_foreign_cc-master",
-   url = "https://github.com/bazelbuild/rules_foreign_cc/archive/master.zip",
-)
-
-load("@rules_foreign_cc//:workspace_definitions.bzl", "rules_foreign_cc_dependencies")
-
-rules_foreign_cc_dependencies()
-
-BUILD_ALL_CONTENT = """filegroup(name = "all", srcs = glob(["**"]), visibility = ["//visibility:public"])"""
-
-new_local_repository(
-  name = "proj",
-  path = "./c-deps/proj",
-  build_file_content = BUILD_ALL_CONTENT,
-)
-
-new_local_repository(
-  name = "jemalloc",
-  path = "./c-deps/jemalloc/src",
-  build_file_content = BUILD_ALL_CONTENT,
-)

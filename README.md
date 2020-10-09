@@ -1,7 +1,6 @@
 To reproduce:
 
 ```
-git submodule init --recursive
 bazel clean
-bazel build //:all
+bazel test --sandbox_debug=True repro:all
 ```
